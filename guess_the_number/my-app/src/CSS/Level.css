@@ -1,0 +1,50 @@
+.level-panel.active { transform: rotateY(0deg); }
+
+.level-panel img {
+  width: 300px;
+  height: auto;
+}
+
+.exit-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.hidden{
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.feedback-error ,.attempts-left, .feedback-error, .attempts-left , .attempts-left, .level-heading{
+  color: red; 
+}
+
+.feedback-success , .level-heading-success, .feedback-hint {
+  color: green; 
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+} 
+
+.too-high, .too-low {
+  color: red;
+}
+.level-panel.active {
+  transform: rotateY(0deg);
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+}
