@@ -1,0 +1,129 @@
+.level-panel.active { transform: rotateY(0deg); }
+
+.level-panel img {
+  width: 300px;
+  height: auto;
+}
+
+.exit-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+.hidden{
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.guess-container {
+  display: flex;
+  gap: 5px; 
+  align-items: center;
+}
+
+.guess-button {
+  margin-left: 10px; 
+}
+
+.feedback-error ,.attempts-left, .feedback-error, .attempts-left , .attempts-left, .level-heading{
+  color: red; 
+}
+
+.feedback-success , .level-heading-success, .feedback-hint {
+  color: #28a745; 
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+} 
+
+.tooHigh, .tooLow {
+  color: red !important;
+}
+
+.level-panel.active {
+  transform: rotateY(0deg);
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+}
+
+
+.level-panel,
+.level-heading,
+.guess-container,
+.feedback-error,
+.feedback-success,
+.feedback-hint,
+.attempts-left,
+.exit-btn,
+.hidden {
+    margin: 10px 0; 
+}
+
+  .exit-btn, .hidden {
+    border: none;
+    padding: 5px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.level-container {
+  display: flex; 
+  justify-content: space-between;
+  gap: 20px; }
+
+.level-panel {
+  flex: 1; 
+}
+
+
+.play-container {
+  position: absolute; 
+  top: 50%; 
+  right: 0; 
+  transform: translateY(-50%); 
+  width: 300px; 
+  border: 1px solid #ccc; 
+  padding: 10px; 
+  background-color:#E0C4A8; 
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px; 
+}
+
+.level-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  align-items: center;
+  padding: 40px;
+}
+
+.level-panel {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+.play-container {
+  background-color: #e0c4a8;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}

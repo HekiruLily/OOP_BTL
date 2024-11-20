@@ -1,0 +1,75 @@
+.pattern, .title, .subtitle, .play-button, .icons-left, .icons-right, .info-card, .left-image {
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .pattern {
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    z-index: 0;
+  }
+  
+  .title, .subtitle {
+    width: 100%;
+    text-align: center;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .title {
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 4em;
+    font-family: 'Impact', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  
+  .subtitle {
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5em;
+    opacity: 0.8;
+  }
+
+  .play-button-1 {
+    background-color: white;
+    color: rgb(122, 41, 192);
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.5em; 
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-right: 15px; 
+    transform: translate(-10%, -40%);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  }
+  
+  .play-button-1:active, 
+  .play-button-1:hover {
+      background-color: #28a745; 
+      color: white; 
+  }
+  
+  
+  .button-container {
+    display: flex;
+    justify-content: center; 
+    gap: 20px; 
+    margin-top: 20px; 
+  }
+  
+  .icon-container {
+    position: absolute;
+    bottom: 30px; 
+    right: 30px; 
+    z-index: 2; 
+    display: flex; 
+    gap: 30px;
+    font-size: 24px; 
+}
