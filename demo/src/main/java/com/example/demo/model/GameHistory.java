@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,23 +7,25 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "game_history")
+@Table(name = "gamehistory")
 public class GameHistory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idGame;
-    private int idPlayer;
-    private int level;
-    private int numberToGuess;
-    private int timePlayed;
-    private int attempted;
-    private boolean result;
-    private int score;
+    private int idGame; // Khóa chính, tự động tăng
 
-    // Constructor
+    private int idPlayer; // Khóa ngoại liên kết với bảng Player
+    private int level; // Mức độ của trò chơi
+    private int numberToGuess; // Số cần đoán
+    private int timePlayed; // Thời gian chơi
+    private int attempted; // Số lần thử
+    private boolean result; // Kết quả (true: thắng, false: thua)
+    private int score; // Điểm số
+
+    // Constructor mặc định
     public GameHistory() {}
 
+    // Constructor có tham số
     public GameHistory(int idPlayer, int level, int numberToGuess, int timePlayed, int attempted, boolean result, int score) {
         this.idPlayer = idPlayer;
         this.level = level;
@@ -34,7 +36,7 @@ public class GameHistory {
         this.score = score;
     }
 
-    // Getters and Setters
+    // Getters và Setters
     public int getIdGame() {
         return idGame;
     }
