@@ -1,0 +1,261 @@
+.level-panel.active { transform: rotateY(0deg); }
+
+.level-panel img {
+  width: 300px;
+  height: auto;
+}
+
+
+.guess-container {
+  display: flex;
+  gap: 5px; 
+  align-items: center;
+}
+
+.guess-button {
+  margin-left: 10px; 
+}
+
+.feedback-error ,.attempts-left, .feedback-error, .attempts-left , .attempts-left, .level-heading{
+  color: rgb(122, 41, 192); 
+}
+
+.feedback-success , .level-heading-success, .feedback-hint {
+  color: #28a745; 
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+} 
+
+.tooHigh, .tooLow {
+  color: red !important;
+}
+button {
+  margin-top: 30px; 
+  padding: 10px 20px; 
+}
+
+.level-panel.active {
+  transform: rotateY(0deg);
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+}
+
+
+.level-panel,
+.level-heading,
+.guess-container,
+.feedback-error,
+.feedback-success,
+.feedback-hint,
+.attempts-left,
+.hidden {
+    margin: 10px 0; 
+}
+
+  .exit-btn, .hidden {
+    border: none;
+    padding: 5px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.level-container {
+  display: flex; 
+  justify-content: space-between;
+  gap: 20px; }
+
+.level-panel {
+  flex: 1; 
+}
+
+
+.play-container {
+  position: absolute; 
+  top: 50%; 
+  right: 0; 
+  transform: translateY(-50%); 
+  width: 300px; 
+  border: 1px solid #ccc; 
+  padding: 10px; 
+  background-color:#E0C4A8; 
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px; 
+}
+
+.level-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  align-items: center;
+  padding: 40px;
+}
+
+.level-panel {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+.play-container {
+  background-color: #e0c4a8;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+
+.info-panel {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.info-box {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  width: 45%;
+  text-align: left;
+  background-color: #f9f9f9;
+}
+
+.info-box p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.level-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.play-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 20px;
+}
+
+.info-box {
+  width: 300px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.total-attempts {
+  align-self: flex-start;
+}
+
+.remaining-attempts {
+  align-self: center;
+}
+
+.remaining-time {
+  align-self: flex-end;
+}
+
+.guess-input {
+  display: flex;
+  gap: 10px;
+}
+
+.guess-input input {
+  width: 200px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.guess-input button {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.guess-input button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+.level-container {
+  display: grid;
+  grid-template-areas: 
+    "remaining-time total-attempts total-attempts"
+    "remaining-time remaining-attempts remaining-attempts"
+    "game-area game-area game-area";
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+.total-attempts,
+.remaining-attempts,
+.remaining-time,
+.guessed-numbers {
+  color:rgb(122, 41, 192);
+}
+
+
+
+.total-attempts {
+  grid-area: total-attempts;
+  justify-self: end; /* Align to the right of the grid */
+  margin-bottom: 50px; 
+}
+
+.remaining-attempts {
+  grid-area: remaining-attempts;
+  justify-self: end; /* Align to the right of the grid */
+}
+
+.remaining-time {
+  grid-area: remaining-time;
+  justify-self: start; /* Align to the left of the grid */
+  margin-bottom: 50px; 
+}
+
+.level-panel.active {
+  grid-area: game-area;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;  /* Center horizontally */
+  align-self: center;    /* Center vertically */
+}
+
+.left {
+  grid-column: 1; /* Align left to the first column */
+  justify-self: start;  /* Align left section to the left edge */
+}
+
+.right {
+  grid-column: 3;
+  justify-self: end;  /* Align right section to the right edge */
+}
+
