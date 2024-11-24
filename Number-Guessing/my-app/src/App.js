@@ -1,4 +1,5 @@
-import React, { useState } from 'react'; // Thêm useState
+// App.js
+import React, { useState } from 'react'; 
 import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
 import Home from './Components/Home';
 import Choose from './Components/Choose';
@@ -8,20 +9,21 @@ import Login from './Components/Login';
 import './App.css';
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Thêm trạng thái đăng nhập
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [idPlayer, setIdPlayer] = useState(null); // Thêm state để lưu idPlayer
 
   return (
     <BrowserRouter>
       <div className="app-container">
         <Routes>
-          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-          <Route path="/home" element={<Home isLoggedIn={isLoggedIn} />} /> {/* Truyền isLoggedIn */}
-          <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} setIdPlayer={setIdPlayer} />} />
+          <Route path="/home" element={<Home isLoggedIn={isLoggedIn} />} />
+          <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} setIdPlayer={setIdPlayer} />} />
           <Route path="/law" element={<Law />} />
           <Route path="/choose" element={<Choose />} />
           <Route 
             path="/level/:levelNumber" 
-            element={<LevelWrapper />} 
+            element={<LevelWrapper idPlayer={idPlayer} />} // Truyền idPlayer vào đây
           />
         </Routes>
       </div>
@@ -30,9 +32,9 @@ const App = () => {
 };
 
 // Tạo một component wrapper để xử lý params
-const LevelWrapper = () => {
+const LevelWrapper = ({ idPlayer }) => {
   const { levelNumber } = useParams();
-  return <Level level={parseInt(levelNumber)} />;
+  return <Level level={parseInt(levelNumber)} idPlayer={idPlayer} />; // Truyền idPlayer vào Level
 };
 
 export default App;

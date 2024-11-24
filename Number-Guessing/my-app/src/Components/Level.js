@@ -3,13 +3,15 @@ import { useNavigate } from "react-router-dom";
 import "../CSS/Level.css";
 import End from "./End";
 
+import axios from 'axios';
+
 const levels = [
   { attempts: 10, image: "/img/4.jpg", answer: Math.floor(Math.random() * 100) + 1, timeLimit: 60 },  
   { attempts: 7, image: "/img/3.jpg", answer: Math.floor(Math.random() * 100) + 1, timeLimit: 45 },   
   { attempts: 5, image: "/img/5.jpg", answer: Math.floor(Math.random() * 100) + 1, timeLimit: 30 }   
 ];
 
-const Level = ({ level }) => {
+const Level = ({ level, idPlayer }) => {
   const navigate = useNavigate();
   const minNum = 1;
   const maxNum = 100;
@@ -23,6 +25,7 @@ const Level = ({ level }) => {
   const [remainingTime, setRemainingTime] = useState(levels[level - 1].timeLimit);  
   const [startTime, setStartTime] = useState(null); 
   const [elapsedTime, setElapsedTime] = useState(0); 
+
 
   const handleGuess = () => {
     const guessNumber = Number(guess);
@@ -70,11 +73,41 @@ const Level = ({ level }) => {
     return () => clearInterval(timer);
   }, [startTime]);
 
+  const sendGameHistoryToBackend = async (result, score) => {
+    const gameHistory = {
+      idPlayer: idPlayer, // Lấy idPlayer từ state hoặc props
+      level: level,
+      numberToGuess: answer,
+      timePlayed: elapsedTime, // Thời gian chơi
+      attempted: levels[level - 1].attempts - remainingAttempts, // Số lần thử
+      result: result,
+      score: score,
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:8080/api/gameHistories', gameHistory);
+      console.log('Game history saved:', response.data);
+    } catch (error) {
+      console.error('Error saving game history:', error);
+    }
+  };
+  
+  const handleGameOver = () => {
+    const score = calculateScore(); // Tính điểm
+    sendGameHistoryToBackend(guessedCorrectly, score); // Gọi hàm gửi dữ liệu
+  };
+  
   useEffect(() => {
     if (gameOver) {
-      setRemainingTime(0);
-      const endTime = Date.now();
-      setElapsedTime(Math.floor((endTime - startTime) / 1000)); 
+      handleGameOver(); // Gọi hàm khi trò chơi kết thúc
+    }
+  }, [gameOver]);
+
+  useEffect(() => {
+    if (gameOver) {
+        setRemainingTime(0);
+        const endTime = Date.now();
+        setElapsedTime(Math.floor((endTime - startTime) / 1000)); 
     }
   }, [gameOver, startTime]);
 
