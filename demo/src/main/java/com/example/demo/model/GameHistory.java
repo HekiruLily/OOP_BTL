@@ -9,18 +9,17 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "gamehistory")
 public class GameHistory {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idGame; // Khóa chính, tự động tăng
+    private int idGame;
 
-    private int idPlayer; // Khóa ngoại liên kết với bảng Player
-    private int level; // Mức độ của trò chơi
-    private int numberToGuess; // Số cần đoán
+    private int idPlayer;
+    private int level;
+    private int numberToGuess;
     private int timePlayed; // Thời gian chơi
-    private int attempted; // Số lần thử
-    private boolean result; // Kết quả (true: thắng, false: thua)
-    private int score; // Điểm số
+    private int attempted;
+    private boolean result;
+    private int score;
 
     // Constructor mặc định
     public GameHistory() {}
