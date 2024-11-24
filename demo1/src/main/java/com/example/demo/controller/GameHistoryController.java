@@ -83,9 +83,9 @@ public class GameHistoryController {
     public ResponseEntity<Void> deleteAllGameHistories() {
         try {
             gameHistoryRepository.deleteAll();
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.noContent().build(); // Trả về mã trạng thái 204
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // Trả về mã lỗi 500 nếu có lỗi xảy ra
         }
-    }
+    } //resetID: ALTER TABLE gamehistory AUTO_INCREMENT = 1; xóa hết trước khi reset
 }

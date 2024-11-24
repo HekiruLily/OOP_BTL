@@ -40,16 +40,10 @@ public class PlayerController {
 
     // Thêm người chơi mới
     @PostMapping
-    public ResponseEntity<Player> createPlayer(@RequestBody Player player) {
-        // Kiểm tra xem người dùng đã tồn tại chưa
-        if (playerRepository.existsByUsername(player.getUsername())) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(null); // Trả về 409 nếu username đã tồn tại
-        }
-
-        Player savedPlayer = playerRepository.save(player);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedPlayer);
+    public Player createPlayer(@RequestBody Player player) {
+        return playerRepository.save(player);
     }
-    
+
     // Cập nhật thông tin người chơi
     @PutMapping("/{id}")
     public ResponseEntity<Player> updatePlayer(@PathVariable int id, @RequestBody Player playerDetails) {
@@ -76,17 +70,6 @@ public class PlayerController {
                     .orElse(ResponseEntity.notFound().build());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-
-    // Xóa tất cả người chơi
-    @DeleteMapping
-    public ResponseEntity<Void> deleteAllPlayers() {
-        try {
-            playerRepository.deleteAll();
-            return ResponseEntity.noContent().build(); // Trả về mã trạng thái 204
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // Trả về mã lỗi 500 nếu có lỗi xảy ra
         }
     }
 }
