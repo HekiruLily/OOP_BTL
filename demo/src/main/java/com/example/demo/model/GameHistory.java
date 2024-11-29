@@ -16,7 +16,7 @@ public class GameHistory {
     private int idPlayer;
     private int level;
     private int numberToGuess;
-    private int timePlayed; // Thời gian chơi
+    private int timePlayed; 
     private int attempted;
     private boolean result;
     private int score;
@@ -35,7 +35,7 @@ public class GameHistory {
         this.score = score;
     }
 
-    // Getters và Setters
+
     public int getIdGame() {
         return idGame;
     }

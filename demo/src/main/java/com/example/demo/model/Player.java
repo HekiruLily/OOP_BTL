@@ -16,7 +16,7 @@ public class Player {
     private String username;
     private String password;
 
-    // Constructor
+
     public Player() {}
 
     public Player(String username, String password) {
@@ -24,7 +24,6 @@ public class Player {
         this.password = password;
     }
 
-    // Getters and Setters
     public int getIdPlayer() {
         return idPlayer;
     }

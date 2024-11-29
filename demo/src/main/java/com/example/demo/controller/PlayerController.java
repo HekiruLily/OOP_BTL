@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired; // cần tạo repository cho Player
+import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,13 +24,11 @@ public class PlayerController {
     @Autowired
     private PlayerRepository playerRepository;
 
-    // Lấy danh sách tất cả người chơi
     @GetMapping
     public List<Player> getAllPlayers() {
         return playerRepository.findAll();
     }
 
-    // Lấy thông tin người chơi theo ID
     @GetMapping("/{id}")
     public ResponseEntity<Player> getPlayerById(@PathVariable int id) {
         return playerRepository.findById(id)
@@ -38,10 +36,8 @@ public class PlayerController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // Thêm người chơi mới
     @PostMapping
     public ResponseEntity<Player> createPlayer(@RequestBody Player player) {
-        // Kiểm tra xem người dùng đã tồn tại chưa
         if (playerRepository.existsByUsername(player.getUsername())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null); // Trả về 409 nếu username đã tồn tại
         }
@@ -50,7 +46,6 @@ public class PlayerController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedPlayer);
     }
     
-    // Cập nhật thông tin người chơi
     @PutMapping("/{id}")
     public ResponseEntity<Player> updatePlayer(@PathVariable int id, @RequestBody Player playerDetails) {
         return playerRepository.findById(id)
@@ -63,7 +58,6 @@ public class PlayerController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // Xóa người chơi
     
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePlayer(@PathVariable int id) {
@@ -71,7 +65,7 @@ public class PlayerController {
             return playerRepository.findById(id)
                     .map(player -> {
                         playerRepository.delete(player);
-                        return ResponseEntity.noContent().<Void>build(); // Chỉ định kiểu dữ liệu là Void
+                        return ResponseEntity.noContent().<Void>build(); 
                     })
                     .orElse(ResponseEntity.notFound().build());
         } catch (Exception e) {
@@ -79,14 +73,13 @@ public class PlayerController {
         }
     }
 
-    // Xóa tất cả người chơi
     @DeleteMapping
     public ResponseEntity<Void> deleteAllPlayers() {
         try {
             playerRepository.deleteAll();
-            return ResponseEntity.noContent().build(); // Trả về mã trạng thái 204
+            return ResponseEntity.noContent().build(); // 204
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // Trả về mã lỗi 500 nếu có lỗi xảy ra
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // 500 nếu có lỗi xảy ra
         }
     }
 }

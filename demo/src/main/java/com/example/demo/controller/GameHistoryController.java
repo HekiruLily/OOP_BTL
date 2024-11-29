@@ -24,13 +24,11 @@ public class GameHistoryController {
     @Autowired
     private GameHistoryRepository gameHistoryRepository;
 
-    // Lấy danh sách tất cả lịch sử trò chơi
     @GetMapping
     public List<GameHistory> getAllGameHistories() {
         return gameHistoryRepository.findAll();
     }
 
-    // Lấy thông tin lịch sử trò chơi theo ID
     @GetMapping("/{id}")
     public ResponseEntity<GameHistory> getGameHistoryById(@PathVariable int id) {
         return gameHistoryRepository.findById(id)
@@ -38,14 +36,12 @@ public class GameHistoryController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // Thêm lịch sử trò chơi mới
     @PostMapping
     public ResponseEntity<GameHistory> createGameHistory(@RequestBody GameHistory gameHistory) {
         GameHistory savedGameHistory = gameHistoryRepository.save(gameHistory);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedGameHistory);
     }
 
-    // Cập nhật thông tin lịch sử trò chơi
     @PutMapping("/{id}")
     public ResponseEntity<GameHistory> updateGameHistory(@PathVariable int id, @RequestBody GameHistory gameHistoryDetails) {
         return gameHistoryRepository.findById(id)
@@ -63,7 +59,6 @@ public class GameHistoryController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // Xóa lịch sử trò chơi
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteGameHistory(@PathVariable int id) {
         try {
@@ -78,7 +73,6 @@ public class GameHistoryController {
         }
     }
 
-    // Xóa tất cả lịch sử trò chơi
     @DeleteMapping
     public ResponseEntity<Void> deleteAllGameHistories() {
         try {
