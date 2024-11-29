@@ -51,8 +51,11 @@ const Level = ({ level, idPlayer }) => {
   };
 
   const calculateScore = () => {
-    return 100 - (levels[level - 1].attempts - remainingAttempts) * 10;
-  };
+    if (guessedCorrectly) {
+        return 100 - (levels[level - 1].attempts - remainingAttempts) * 10;
+    }
+    return 0; 
+};
 
   useEffect(() => {
     if (!startTime) {
@@ -73,17 +76,17 @@ const Level = ({ level, idPlayer }) => {
     return () => clearInterval(timer);
   }, [startTime]);
 
-  const sendGameHistoryToBackend = async (result, score) => {
+  const sendGameHistoryToBackend = async (result, score, elapsedTime) => {
     const gameHistory = {
-      idPlayer: idPlayer, // Lấy idPlayer từ state hoặc props
+      idPlayer: idPlayer,
       level: level,
       numberToGuess: answer,
-      timePlayed: elapsedTime, // Thời gian chơi
-      attempted: levels[level - 1].attempts - remainingAttempts, // Số lần thử
+      timePlayed: elapsedTime,
+      attempted: levels[level - 1].attempts - remainingAttempts, 
       result: result,
       score: score,
     };
-  
+
     try {
       const response = await axios.post('http://localhost:8080/api/gameHistories', gameHistory);
       console.log('Game history saved:', response.data);
@@ -91,15 +94,16 @@ const Level = ({ level, idPlayer }) => {
       console.error('Error saving game history:', error);
     }
   };
-  
+
   const handleGameOver = () => {
-    const score = calculateScore(); // Tính điểm
-    sendGameHistoryToBackend(guessedCorrectly, score); // Gọi hàm gửi dữ liệu
-  };
-  
+    const score = calculateScore(); 
+    const timePlayed = elapsedTime; 
+    sendGameHistoryToBackend(guessedCorrectly, score, timePlayed); 
+};
+
   useEffect(() => {
     if (gameOver) {
-      handleGameOver(); // Gọi hàm khi trò chơi kết thúc
+      handleGameOver(); 
     }
   }, [gameOver]);
 
@@ -108,8 +112,13 @@ const Level = ({ level, idPlayer }) => {
         setRemainingTime(0);
         const endTime = Date.now();
         setElapsedTime(Math.floor((endTime - startTime) / 1000)); 
+
+        
+        if (remainingAttempts === 0 || remainingTime === 0) {
+            sendGameHistoryToBackend(false, 0); 
+        }
     }
-  }, [gameOver, startTime]);
+}, [gameOver, startTime]);
 
   const showEndModal = gameOver; 
 
@@ -172,7 +181,7 @@ const Level = ({ level, idPlayer }) => {
           elapsedTime={elapsedTime}
           onClose={handleCloseModal}
         />
-      )}
+      )}*-
     </div>
   );
 };

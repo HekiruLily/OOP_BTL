@@ -27,6 +27,11 @@ const Home = ({ isLoggedIn }) => {
         setShowRules(false); 
     };
 
+    const handleOpenHistory = () => {
+        
+        navigate('/history'); 
+    };
+
     return (
         <div className="Home">
             <div className="pattern"></div>
@@ -42,8 +47,8 @@ const Home = ({ isLoggedIn }) => {
                 <div className="card-content">Guess the number in as few attempts as possible. Good luck!</div>
             </div>
             <div className="icon-container">
-                <span className="icon" onClick={handleOpenRules}><i className="bi bi-card-list"></i></span> 
-                <span className="icon" onClick={handleOpenRules}><i className="bi bi-gear"></i></span> 
+            <span className="icon" onClick={handleOpenHistory}><i className="bi bi-card-list"></i></span>
+            <span className="icon" onClick={handleOpenRules}><i className="bi bi-gear"></i></span> 
             </div>
 
             {showLaw && <Law onClose={handleCloseLaw} level={currentLevel} />} 

@@ -1,0 +1,54 @@
+.history-container {
+    background-color: #f9f9f9; /* Màu nền nhẹ nhàng */
+    border-radius: 10px; /* Bo góc cho container */
+    padding: 20px; /* Thêm khoảng cách bên trong */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Tạo bóng cho container */
+    max-width: 600px; /* Giới hạn chiều rộng tối đa */
+    margin: 20px auto; /* Giữa trang */
+}
+
+.history-title {
+    font-size: 2em; /* Kích thước chữ lớn hơn */
+    color: #333; /* Màu chữ tối */
+    text-align: center; /* Canh giữa tiêu đề */
+    margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+}
+
+.history-list {
+    list-style-type: none; /* Xóa dấu chấm đầu dòng */
+    padding: 0; /* Xóa khoảng cách bên trong */
+    color: #333;
+}
+
+
+.history-item:hover {
+    transform: translateY(-2px); /* Hiệu ứng nhấc nhẹ khi hover */
+}
+
+.back-button-container {
+    text-align: center; /* Canh giữa nút quay lại */
+    margin-top: 20px; /* Khoảng cách trên nút */
+}
+
+.back-button {
+    background-color: #007bff; /* Màu nền nút */
+    color: white; /* Màu chữ */
+    border: none; /* Xóa viền */
+    padding: 10px 20px; /* Khoảng cách bên trong */
+    border-radius: 5px; /* Bo góc cho nút */
+    cursor: pointer; /* Đổi con trỏ khi hover */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+.back-button:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+}
+
+.history-item {
+    background-color: #fff; /* Màu nền trắng cho từng mục */
+    border-radius: 5px; /* Bo góc cho từng mục */
+    padding: 15px; /* Thêm khoảng cách bên trong cho từng mục */
+    margin-bottom: 10px; /* Khoảng cách giữa các mục */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Tạo bóng cho từng mục */
+    transition: transform 0.2s; /* Hiệu ứng chuyển động */
+}

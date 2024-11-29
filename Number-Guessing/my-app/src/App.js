@@ -6,11 +6,12 @@ import Choose from './Components/Choose';
 import Level from './Components/Level';
 import Law from './Components/Law';
 import Login from './Components/Login';
+import History from './Components/History';
 import './App.css';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [idPlayer, setIdPlayer] = useState(null); // Thêm state để lưu idPlayer
+  const [idPlayer, setIdPlayer] = useState(null); 
 
   return (
     <BrowserRouter>
@@ -21,9 +22,10 @@ const App = () => {
           <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} setIdPlayer={setIdPlayer} />} />
           <Route path="/law" element={<Law />} />
           <Route path="/choose" element={<Choose />} />
+          <Route path="/history" element={<History />} />
           <Route 
             path="/level/:levelNumber" 
-            element={<LevelWrapper idPlayer={idPlayer} />} // Truyền idPlayer vào đây
+            element={<LevelWrapper idPlayer={idPlayer} />} 
           />
         </Routes>
       </div>
@@ -31,10 +33,10 @@ const App = () => {
   );
 };
 
-// Tạo một component wrapper để xử lý params
+
 const LevelWrapper = ({ idPlayer }) => {
   const { levelNumber } = useParams();
-  return <Level level={parseInt(levelNumber)} idPlayer={idPlayer} />; // Truyền idPlayer vào Level
+  return <Level level={parseInt(levelNumber)} idPlayer={idPlayer} />; 
 };
 
 export default App;

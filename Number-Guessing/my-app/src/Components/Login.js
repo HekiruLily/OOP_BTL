@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../CSS/Login.css';
 
-const Login = ({ setIsLoggedIn , setIdPlayer }) => { // Nhận prop setIsLoggedIn
+const Login = ({ setIsLoggedIn , setIdPlayer }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate(); 
@@ -18,7 +18,7 @@ const Login = ({ setIsLoggedIn , setIdPlayer }) => { // Nhận prop setIsLoggedI
         });
 
         if (response.status === 201) {
-          setIdPlayer(response.data.idPlayer); // Lưu idPlayer từ phản hồi
+          setIdPlayer(response.data.idPlayer); 
           setIsLoggedIn(true);
           navigate('/home');
         } else {
